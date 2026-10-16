@@ -1,0 +1,34 @@
+{
+	"Process_Type": "Task",
+	"Import_INFO":{
+			"Calc_Fun_Name": "FunRawHTARWS",
+			"IS_Use_Same_Onsets": 0
+	},
+	"Data_INFO": {
+			"TR": [],
+			"Snum": 1,
+			"SliceTiming_INFO": {
+					"IS_SliceTiminged": 1,
+					"Slice_Order": [],
+					"Ref_Slice": []
+			},
+			"IS_Normalized": 1
+	},
+	"Process_INFO": {
+			"Design_Type": "Block",
+			"Time_Unit": "scans",
+			"Regressor_INFO": {
+					"IS_Regress_RP": 1,
+					"IS_Regress_Others": 0,
+					"IS_Extract_ACC0_as_ErrorCond": 0
+			},
+			"Mask_INFO": {
+					"IS_Use_Mask": 1,
+					"Custom_Mask_File": ""
+			},
+			"Session_INFO": {
+					"IS_Combine_Sessions": 0,
+					"Session_Weights": []
+			}
+	}
+}

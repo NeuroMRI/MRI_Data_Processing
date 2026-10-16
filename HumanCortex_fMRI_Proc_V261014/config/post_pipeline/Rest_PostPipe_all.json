@@ -1,0 +1,42 @@
+{
+	"Process_Type": "Rest",
+	"Import_INFO": {
+			"Custom_BrainMask": ""
+	},
+	"Data_INFO": {
+			"TR": [],
+			"Snum": 1,
+			"IS_Normalized": 1
+	},
+	"Process_INFO": {
+			"FWHM": [],
+			"Session_Weights": [],
+			"ALFF_INFO": {
+				"Calc_Fun_Name": "FunRawHTARWDC",
+				"Band": [0.01, 0.1]
+			},
+			"ReHo_INFO": {
+				"Calc_Fun_Name": "FunRawHTARWDC"
+			},
+			"FCseed_INFO": {
+				"Calc_Fun_Name": "FunRawHTARWSDCF",
+				"Seed_INFO": {
+					"Default": 1,
+					"Seed": [
+						[0,-52,30,6],
+						[-64,-20,6,6]
+					],
+					"Mask": [],
+					"TimeSeries": "",
+					"Atlas":{
+						"File": "",
+						"ROI_Indices": [1,2,3,"113:115"]
+					}
+				}
+			},
+			"FCmatrix_INFO": {
+				"Calc_Fun_Name": "FunRawHTARWSDCF",
+				"Atlas": "D:\UIH_RCA\Toolbox_and_Data\UIH_fMRI_Proc_V260415\config\template\Schaefer2018_400Parcels_7Networks_order_FSLMNI152_2mm.nii"
+			}
+	}
+}
