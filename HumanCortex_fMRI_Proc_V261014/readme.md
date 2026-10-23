@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-**HumanCortex_fMRI_Proc_V261014** is a toolbox developed for human fMRI analysis based on **SPM12**, capable of processing both single-echo and multi-echo data. At the current stage, only data acquired from United Imaging Healthcare (UIH) scanners are supported. In particular, we would like to express our sincere gratitude to the developers of the DPABI<sup>[1]</sup> (https://github.com/Chaogan-Yan/DPABI), RESTplus<sup>[2]</sup> (http://restfmri.net/forum/restplus), NIfTI_20140122 and dicm2nii (https://github.com/xiangruili/dicm2nii), from which the code in `preprocessing\basic` and `config\dicm2nii-master` was primarily adapted, for providing robust and convenient functions that have greatly facilitated fMRI data preprocessing and analysis.
+**HumanCortex_fMRI_Proc_V261014** is a toolbox developed for human fMRI analysis based on **SPM12**, capable of processing both single-echo and multi-echo data. At the current stage, only data acquired from United Imaging Healthcare (UIH) scanners are supported. In particular, we would like to express our sincere gratitude to the developers of the DPABI<sup>[1]</sup> (https://github.com/Chaogan-Yan/DPABI), RESTplus<sup>[2]</sup> (http://restfmri.net/forum/restplus), and dicm2nii (https://github.com/xiangruili/dicm2nii), from which the code in `preprocessing\basic` and `config\dicm2nii-master` was primarily adapted, for providing robust and convenient functions that have greatly facilitated fMRI data preprocessing and analysis.
 
 ## 2. Installation
 
@@ -111,19 +111,19 @@ The following is an example for resting-state preprocessing:
 ```json
 {
     "Config_INFO":{
-        "Template":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\template\\MNI152_T1_1mm.nii",
+        "Template":"D:\HumanCortex_fMRI_Proc_V261014\config\template\MNI152_T1_1mm.nii",
         "TPM":{
-            "GM_Path":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\template\\TPM.nii,1",
-            "WM_Path":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\template\\TPM.nii,2",
-            "CSF_Path":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\template\\TPM.nii,3",
-            "Skull_Path":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\template\\TPM.nii,4",
-            "Scalp_Path":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\template\\TPM.nii,5",
-            "Background_Path":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\template\\TPM.nii,6"
+            "GM_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,1",
+            "WM_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,2",
+            "CSF_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,3",
+            "Skull_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,4",
+            "Scalp_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,5",
+            "Background_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,6"
         },
         "Mask":{
-            "Brain":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\mask\\BrainMask.nii",
-            "WM":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\mask\\WhiteMask.nii",
-            "CSF":"D:\\HumanCortex_fMRI_Proc_V261014\\config\\mask\\CsfMask.nii"
+            "Brain":"D:\HumanCortex_fMRI_Proc_V261014\config\mask\BrainMask.nii",
+            "WM":"D:\HumanCortex_fMRI_Proc_V261014\config\mask\WhiteMask.nii",
+            "CSF":"D:\HumanCortex_fMRI_Proc_V261014\config\mask\CsfMask.nii"
         }
     },
     "Process_Type": "Prep",
@@ -153,7 +153,8 @@ The following is an example for resting-state preprocessing:
             "IsWholeBrain": 0,
             "IsCSF": 1,
             "IsWhiteMatter": 1,
-            "IsHeadMotion": 4
+            "IsHeadMotion": 4,
+            "AddMean": 1
         },
         "Step_F": {"Name": "Filter", "Band": [0.01, 0.1]}
     },
@@ -215,7 +216,7 @@ Each step is defined as a key-value pair. The key is the step ID (e.g., `Step_H`
 | `Step_A` | `Slice_Timing` | `Slice_Order`, `Ref_Slice` | Slice-timing correction. `Slice_Order` is the slice acquisition order; `Ref_Slice` is the reference slice. |
 | `Step_R` | `Realign` | — | Realign functional images to correct for head motion. |
 | `Step_Cb` | `ME_Combine` | — | Combine multi-echo data into a single echo time series. |
-| `Step_C` | `Covs_Regressing` | `IsWholeBrain`, `IsCSF`, `IsWhiteMatter`, `IsHeadMotion`, `AddMean` | Regress out nuisance covariates. `IsWholeBrain`/`IsCSF`/`IsWhiteMatter` are flags (0/1) for regressing whole-brain, CSF, and WM signals, respectively. `IsHeadMotion` specifies the head-motion model order (e.g., `4` for 24-parameter model). `AddMean` adds the mean signal back after regression. |
+| `Step_C` | `Covs_Regressing` | `IsWholeBrain`, `IsCSF`, `IsWhiteMatter`, `IsHeadMotion`, `AddMean` | Regress out nuisance covariates. `IsWholeBrain`/`IsCSF`/`IsWhiteMatter` are flags (0/1) for regressing whole-brain, CSF, and WM signals, respectively. `IsHeadMotion`: `0` = no head-motion regression; `1` = 6 original parameters; `2` = 6 original + 6 previous frame  (≈ derivative, 12); `3` = 6 original + 6 squared (12); `4` = original + previous frame + squared + previous frame’s squared (24-parameter model). `AddMean`:`1` adds the mean signal back after regression. |
 | `Step_W` | `Normalize` | `IsDARTEL`, `ResVoxelSize` | Normalize to template space. `IsDARTEL` toggles DARTEL-based normalization (0/1). `ResVoxelSize` is the target voxel size (e.g., `[2, 2, 2]`). |
 | `Step_S` | `Smooth` | `FWHM` | Spatial smoothing. `FWHM` is the Gaussian kernel size in mm (e.g., `[4, 4, 4]`). |
 | `Step_D` | `Detrend` | — | Remove linear (and optionally higher-order) trends from the time series. |
@@ -263,16 +264,16 @@ The following is an example for resting-state post-processing, including ALFF, R
                     [-64, -20, 6, 6]
                 ],
                 "Mask": [],
-                "TimeSeries": "",
+                "TimeSeries": "D:\...\XXX.txt",
                 "Atlas": {
-                    "File": "",
+                    "File": "D:\HumanCortex_fMRI_Proc_V261014\config\template\Schaefer2018_400Parcels_7Networks_order_FSLMNI152_2mm.nii",
                     "ROI_Indices": [1, 2, 3, "113:115"]
                 }
             }
         },
         "FCmatrix_INFO": {
             "Calc_Fun_Name": "FunHTARWSDCF",
-            "Atlas": "D:\\HumanCortex_fMRI_Proc_V261014\\config\\template\\Schaefer2018_400Parcels_7Networks_order_FSLMNI152_2mm.nii"
+            "Atlas": "D:\HumanCortex_fMRI_Proc_V261014\config\template\Schaefer2018_400Parcels_7Networks_order_FSLMNI152_2mm.nii"
         }
     }
 }
