@@ -1,0 +1,15 @@
+{
+	"Process_Type": "Group",
+	"Import_INFO": {
+			"Stats_Results_Name": "Results_Rest",
+			"GroupInfo_File": "C:\Users\1996b\Desktop\ExampleData\Task\GroupInfo_TwoSampleT.xlsx",
+			"Custom_Mask_File": ""
+	},
+	"Data_INFO": {
+			"Snum": 1
+	},
+	"Process_INFO": {
+			"Stats_Type": "TwoSample_T_Test",
+			"Stats_Indices": ["ALFF", "ReHo", "FCseed_*"]
+	}
+}

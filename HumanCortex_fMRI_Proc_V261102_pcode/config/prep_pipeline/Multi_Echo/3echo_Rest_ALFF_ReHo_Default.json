@@ -1,0 +1,45 @@
+{
+   "Config_INFO":{
+        "Template":"D:\HumanCortex_fMRI_Proc_V261102\config\template\MNI152_T1_1mm.nii",
+        "TPM":{
+            "GM_Path":"D:\HumanCortex_fMRI_Proc_V261102\config\template\grey.nii",
+            "WM_Path":"D:\HumanCortex_fMRI_Proc_V261102\config\template\white.nii",
+            "CSF_Path":"D:\HumanCortex_fMRI_Proc_V261102\config\template\csf.nii"
+        },
+        "Mask":{
+        "Brain":"D:\HumanCortex_fMRI_Proc_V261102\config\mask\BrainMask.nii",
+        "WM":"D:\HumanCortex_fMRI_Proc_V261102\config\mask\WhiteMask.nii",
+        "CSF":"D:\HumanCortex_fMRI_Proc_V261102\config\mask\CsfMask.nii"
+        }
+    },
+	"Process_Type": "Prep",
+	"Import_INFO":{
+		"Start_Fun_Name": "FunRaw",
+		"Start_T1_Name": "T1Raw"
+	},
+	"Data_INFO":{
+		"TR": [],
+		"Snum": 1,
+		"Enum": 3,
+		"RefEcho": 1
+	},
+	"Process_INFO":{
+		"Step_H": {"Name": "DICOM_2_Nii", "Brain_Size_mm": 150},
+		"Step_T": {"Name": "Remove_First_n_Timepoints", "Del_Tps": 10},
+		"Step_A": {"Name": "Slice_Timing", "Slice_Order": [], "Ref_Slice": []},
+		"Step_R": {"Name": "Realign"},
+		"Step_Cb": {"Name": "ME_Combine"},
+        		"Step_W": {"Name": "Normalize",
+                		"IsDARTEL": 0,
+                		"ResVoxelSize": [2, 2, 2]
+                		},
+		"Step_D": {"Name": "Detrend"},
+       		"Step_C": {"Name": "Covs_Regressing",
+            			"IsWholeBrain": 0,
+            			"IsCSF": 1,
+            			"IsWhiteMatter": 1,
+            			"IsHeadMotion": 4
+        			}
+		},
+		"Delete_Folder_INFO": []
+}
