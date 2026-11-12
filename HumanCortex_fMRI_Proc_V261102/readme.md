@@ -9,6 +9,7 @@
 1. Download **SPM12** (https://www.fil.ion.ucl.ac.uk/spm/software/spm12/), and add them to the MATLAB environment path.
 2. Extract the **HumanCortex_fMRI_Proc_V261102** package and add it to the MATLAB environment path (subfolders must be included).
 3. MATLAB version must be **R2022a or above**.
+4. **Microsoft Office** must be in your PC to open the excel files. 
 
 ## 3. Data Input Format
 
