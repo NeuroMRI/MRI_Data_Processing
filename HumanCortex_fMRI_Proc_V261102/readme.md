@@ -1,13 +1,13 @@
-# HumanCortex_fMRI_Proc_V261014
+# HumanCortex_fMRI_Proc_V261102
 
 ## 1. Introduction
 
-**HumanCortex_fMRI_Proc_V261014** is a toolbox developed for human fMRI analysis based on **SPM12**, capable of processing both single-echo and multi-echo data. At the current stage, only data acquired from United Imaging Healthcare (UIH) scanners are supported. In particular, we would like to express our sincere gratitude to the developers of the DPABI<sup>[1]</sup> (https://github.com/Chaogan-Yan/DPABI), RESTplus<sup>[2]</sup> (http://restfmri.net/forum/restplus), and dicm2nii (https://github.com/xiangruili/dicm2nii), from which the code in `preprocessing\basic` and `config\dicm2nii-master` was primarily adapted, for providing robust and convenient functions that have greatly facilitated fMRI data preprocessing and analysis.
+**HumanCortex_fMRI_Proc_V261102** is a toolbox developed for human fMRI analysis based on **SPM12**, capable of processing both single-echo and multi-echo data. At the current stage, only data acquired from United Imaging Healthcare (UIH) scanners are supported. In particular, we would like to express our sincere gratitude to the developers of the DPABI<sup>[1]</sup> (https://github.com/Chaogan-Yan/DPABI), RESTplus<sup>[2]</sup> (http://restfmri.net/forum/restplus), and dicm2nii (https://github.com/xiangruili/dicm2nii), from which the code in `preprocessing\basic` and `config\dicm2nii-master` was primarily adapted, for providing robust and convenient functions that have greatly facilitated fMRI data preprocessing and analysis.
 
 ## 2. Installation
 
 1. Download **SPM12** (https://www.fil.ion.ucl.ac.uk/spm/software/spm12/), and add them to the MATLAB environment path.
-2. Extract the **HumanCortex_fMRI_Proc_V261014** package and add it to the MATLAB environment path (subfolders must be included).
+2. Extract the **HumanCortex_fMRI_Proc_V261102** package and add it to the MATLAB environment path (subfolders must be included).
 3. MATLAB version must be **R2022a or above**.
 
 ## 3. Data Input Format
