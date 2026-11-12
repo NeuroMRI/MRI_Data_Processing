@@ -106,24 +106,22 @@ The parameter configuration file specifies the parameters for each step of the p
 
 ### 4.1 Example Configuration File (Preprocessing)
 
-The following is an example for resting-state preprocessing:
+The following is an example for resting-state preprocessing， you can copy the json file (eg. `Xecho_Rest_preprocess_FC_Default.json` or `Xecho_Rest_preprocess_FC_Dartel.json`):
+> `Xecho_Rest_preprocess_FC_Default.json` 
 
 ```json
 {
     "Config_INFO":{
-        "Template":"D:\HumanCortex_fMRI_Proc_V261014\config\template\MNI152_T1_1mm.nii",
+        "Template":"D:\HumanCortex_fMRI_Proc_V261102\config\template\MNI152_T1_1mm.nii",
         "TPM":{
-            "GM_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,1",
-            "WM_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,2",
-            "CSF_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,3",
-            "Skull_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,4",
-            "Scalp_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,5",
-            "Background_Path":"D:\HumanCortex_fMRI_Proc_V261014\config\template\TPM.nii,6"
+            "GM_Path":"D:\HumanCortex_fMRI_Proc_V261102\config\template\grey.nii",
+            "WM_Path":"D:\HumanCortex_fMRI_Proc_V261102\config\template\white.nii",
+            "CSF_Path":"D:\HumanCortex_fMRI_Proc_V261102\config\template\csf.nii"
         },
         "Mask":{
-            "Brain":"D:\HumanCortex_fMRI_Proc_V261014\config\mask\BrainMask.nii",
-            "WM":"D:\HumanCortex_fMRI_Proc_V261014\config\mask\WhiteMask.nii",
-            "CSF":"D:\HumanCortex_fMRI_Proc_V261014\config\mask\CsfMask.nii"
+        "Brain":"D:\HumanCortex_fMRI_Proc_V261102\config\mask\BrainMask.nii",
+        "WM":"D:\HumanCortex_fMRI_Proc_V261102\config\mask\WhiteMask.nii",
+        "CSF":"D:\HumanCortex_fMRI_Proc_V261102\config\mask\CsfMask.nii"
         }
     },
     "Process_Type": "Prep",
@@ -171,17 +169,17 @@ Configuration information related to templates and masks. The TPM and mask files
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `Template` | String | Yes | Path to the template image used for normalization and alignment. Should be a NIfTI file. |
-| `TPM.GM_Path` | String | Yes | Path to the gray matter (GM) tissue probability map. The suffix `,1` indicates the first volume in the TPM file. |
-| `TPM.WM_Path` | String | Yes | Path to the white matter (WM) tissue probability map. The suffix `,2` indicates the second volume in the TPM file. |
-| `TPM.CSF_Path` | String | Yes | Path to the cerebrospinal fluid (CSF) tissue probability map. The suffix `,3` indicates the third volume in the TPM file. |
-| `TPM.Skull_Path` | String | No | Path to the skull tissue probability map. The suffix `,4` indicates the fourth volume in the TPM file. |
-| `TPM.Scalp_Path` | String | No | Path to the scalp tissue probability map. The suffix `,5` indicates the fifth volume in the TPM file. |
-| `TPM.Background_Path` | String | No | Path to the background tissue probability map. The suffix `,6` indicates the sixth volume in the TPM file. |
+| `TPM.GM_Path` | String | Yes | Path to the gray matter (GM) tissue probability map.|
+| `TPM.WM_Path` | String | Yes | Path to the white matter (WM) tissue probability map.|
+| `TPM.CSF_Path` | String | Yes | Path to the cerebrospinal fluid (CSF) tissue probability map.|
+| `TPM.Skull_Path` | String | No | Path to the skull tissue probability map.|
+| `TPM.Scalp_Path` | String | No | Path to the scalp tissue probability map.|
+| `TPM.Background_Path` | String | No | Path to the background tissue probability map.|
 | `Mask.Brain` | String | Yes | Path to the whole-brain mask. |
 | `Mask.WM` | String | Yes | Path to the white matter mask. |
 | `Mask.CSF` | String | Yes | Path to the CSF mask. |
 
-> At minimum, the TPM files for **GM**, **WM**, and **CSF** are required to run the pipeline. The `Skull`, `Scalp`, and `Background` TPM files are optional. The `Template` and all `Mask` files are required.
+> At minimum, the TPM files for **GM**, **WM**, and **CSF** are required to run the pipeline that can use the old segment with SPM. The `Skull`, `Scalp`, and `Background` TPM files are optional. The `Template` and all `Mask` files are required.
 
 ##### `Process_Type`
 
